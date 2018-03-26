@@ -1,0 +1,17 @@
+            {% extends "index.html" %}
+            {% block topics %}
+            <section>
+                <nav class="sub-nav">
+                    <a class="sub-links" href="{{ url_for("home" )}}">All Topics</a>
+                    <a class="sub-links sub-active">My Topics</a>
+                </nav>
+            </section>
+            <form class="topics" action="{{ url_for("add_topic")}}" method="post">
+                <label for="topic_title">Title:</label>
+                <input class="title" name="topic_title" type="text" value="Topic 01" maxlength="100">
+                <label for="topic_content">Content:</label>
+                <textarea name="topic_content"></textarea>
+                <input type="submit" name="submit" value="Add">
+                <input type="submit" name="submit" value="Discard">
+            </form>
+            {% endblock %}

@@ -1,0 +1,95 @@
+body{
+  margin:2%;
+  }
+
+body, .main-active{
+  background: #e4d2d2;
+  color: #000;
+  }
+
+header,footer, .main-nav{
+  text-align: center;
+  }
+
+header{
+  background: #62383C;
+  opacity: 0.7;
+  color: #fff;
+  border-style: double none;
+  border-color: #fff;
+  }
+
+span, .main-nav{
+  font-size: 135%;
+  }
+
+nav{
+  font-style: italic;
+  }
+
+footer{
+  margin: 1%;
+  border-top: solid;
+  border-color: #e0e2ef;
+  }
+
+.main-active, .sub-active{
+  font-style: normal;
+  }
+
+.main-nav{
+  font-variant: small-caps;
+           position: relative;
+
+           }
+
+.sub-nav{
+  font-size: 115%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.sub-links{
+  padding: 1%;
+  }
+
+.sub-active{
+             background: #e0e2ef;
+  }
+
+.topics{
+  background: #e0e2ef;
+  padding: 1%;
+  margin: 0 auto;
+  }
+
+.member{
+  font-size:75%;
+  }
+
+p{
+  background: #e4d0d0;
+  padding: 1%;
+  }
+
+label{
+  font-size: 110%;
+  margin-left: 2.5%;
+}
+.title, textarea{
+  font-size: 110%;
+  display: block;
+  width: 95%;
+  margin: 1% auto;
+  }
+
+textarea{
+  height: 250px;
+  }
+
+input[type=submit]{
+  margin-left: 2.5%;
+  font-size: 120%;
+  width: 5em;
+  height: 2em;
+                    }

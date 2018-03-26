@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="style.css")}}">
+    </head>
+    <body>
+        <header>
+            <h1>OMAC</h1>
+        </header>
+        <nav class="main-nav">
+            <a class="main-active">TOPICS</a>
+            <span>|</span>
+            <a href="">MEMBER</a>
+            <span>|</span>
+            <a href="">PROFILE</a>
+        </nav>
+        <main>
+            {% block topics %}
+            <section>
+                <nav class="sub-nav">
+                    <a class="sub-links sub-active">All Topics</a>
+                    <a class="sub-links" href="">My Topics</a>
+                </nav>
+            </section>
+            <section class="topics">
+                {% for post in posts %}
+                <p>
+                    <cite>
+                        <a href="">{{post.title}}</a>
+                    </cite>
+                    <br>
+                    <span class="member">
+                        {{members.get_by_id(post.member_id).name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                    </span>
+                </p>
+                {% endfor %}
+            </section>
+            {% endblock %}
+        </main>
+        <footer>
+            <p>&copy; Copyright 2018 by OMAC Full Stack Workshop</p>
+        </footer>
+    </body>
+</html>
