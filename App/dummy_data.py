@@ -27,8 +27,6 @@ dummy_posts = [
 def seed_stores(member_store, post_store):
     for member in dummy_members:
         member_store.add(member)
-        print "## Debug Member ID: ", member_store.members[-1].id
 
     for post in dummy_posts:
         post_store.add(post)
-        print "## Debug Post Member ID:", post_store.posts[-1].member_id
