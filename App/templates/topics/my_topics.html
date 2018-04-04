@@ -1,0 +1,36 @@
+            {% extends "topics/index.html" %}
+            {% block sub_nav %}
+            <section>
+                <nav class="sub-nav">
+                    <a class="sub-links" href="{{ url_for("home") }}">All Topics</a>
+                    <a class="sub-links sub-active">My Topics</a>
+                </nav>
+            </section>
+            {% endblock %}
+            {% block content %}
+            <section class="topics">
+                {% with posts = member.posts %}
+                {% if posts %}
+                {% for post in (member.posts) %}
+                <div id="atopic">
+                    <p>
+                    <cite>
+                        <a href="">{{post.title}}</a>
+                    </cite>
+                    <br>
+                    <span class="member">
+                        {{member.name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                    </span>
+                    </p>
+                    <div id="modifiers">
+                        <a href="">Edit</a> |
+                        <a href="{{ url_for("topic_delete", id=post.id )}}"> Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>{{ member.name }}, you have no posts yet.</p>
+                {% endif %}
+                {% endwith %}
+            </section>
+            {% endblock %}
