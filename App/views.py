@@ -49,8 +49,7 @@ def topic_delete(id):
         if request.form['submit'] == "Delete":
             db_con.post_store.delete(id)
             db_con.update_members_posts()
-            member = db_con.member_store.get_by_id(member_id)
-            return redirect(url_for("my_topics", id=member.id))
+            return redirect(url_for("my_topics", id=member_id))
         else:
             return redirect(url_for("my_topics", id=member_id))
     return render_template("topics/topic_delete.html",
