@@ -74,7 +74,7 @@ class MemberStore(BaseStore):
 
         all_members = self.get_all()
         for member, post in itertools.product(all_members, posts):
-            if post.member_id == member.id:
+            if post.member_id == member.id and post not in member.posts:
                 member.posts.append(post)
         return(member for member in self.get_all())
 
