@@ -19,7 +19,7 @@ app.config[
 def home():
     return render_template("topics/index.html",
                            title="OMAC - Add Topic",
-                           posts=db_con.post_store.get_all(),
+                           posts=db_con.post_store.get_post_by_date(),
                            members=db_con.member_store)
 
 

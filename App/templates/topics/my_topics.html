@@ -14,7 +14,8 @@
                 {% if posts_no %}
                 <fieldset>
                     <legend><h3>"{{member.name}}", you have {{posts_no}} topics</h3></legend>
-                    {% for post in member.posts %}
+                    {% with posts = member.posts[::-1] %}
+                    {% for post in posts %}
                     <div class="atopic">
                         <p>
                         <cite>
@@ -31,6 +32,7 @@
                         </div>
                     </div>
                     {% endfor %}
+                    {% endwith %}
                 </fieldset>
                 {% else %}
                 <p>{{ member.name }}, you have no published topics yet.</p>
