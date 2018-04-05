@@ -1,0 +1,15 @@
+            {% extends "topics/my_topics.html" %}
+            {% block content %}
+            <form class="topics" action="{{ url_for("topic_edit", post_id=post.id) }}" method="post">
+                <fieldset>
+                    <legend>Edit Topic</legend>
+                    <br>
+                    <label for="topic_title">Title:</label>
+                    <input class="title" name="topic_title" type="text" value="{{ post.title  }}" maxlength="100">
+                    <label for="topic_content">Content:</label>
+                    <textarea name="topic_content">{{ post.body }}</textarea>
+                    <input type="submit" name="submit" value="Save">
+                    <input type="submit" name="submit" value="Discard">
+                </fieldset>
+            </form>
+            {% endblock %}

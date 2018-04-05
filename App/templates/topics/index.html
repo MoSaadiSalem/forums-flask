@@ -1,0 +1,33 @@
+            {% extends "base.html" %}
+            {% block main_nav %}
+            <nav class="main-nav">
+                <a class="main-active">TOPICS</a>
+                <span>|</span>
+                <a href="">MEMBER</a>
+                <span>|</span>
+                <a href="">PROFILE</a>
+            </nav>
+            {% endblock %}
+            {% block sub_nav %}
+            <section>
+                <nav class="sub-nav">
+                    <a class="sub-links sub-active">All Topics</a>
+                    <a class="sub-links" href="{{ url_for("my_topics", member_id=1) }}">My Topics</a>
+                </nav>
+            </section>
+            {% endblock %}
+            {% block content %}
+            <section class="topics">
+                {% for post in posts %}
+                <p>
+                    <cite>
+                        <a href="">{{post.title}}</a>
+                    </cite>
+                    <br>
+                    <span class="member">
+                        {{members.get_by_id(post.member_id).name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                    </span>
+                </p>
+                {% endfor %}
+            </section>
+            {% endblock %}
