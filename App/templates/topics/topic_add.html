@@ -1,11 +1,15 @@
             {% extends "topics/my_topics.html" %}
             {% block content %}
-            <form class="topics" action="{{ url_for("topic_add")}}" method="post">
-                <label for="topic_title">Title:</label>
-                <input class="title" name="topic_title" type="text" value="Topic 01" maxlength="100">
-                <label for="topic_content">Content:</label>
-                <textarea name="topic_content"></textarea>
-                <input type="submit" name="submit" value="Add">
-                <input type="submit" name="submit" value="Discard">
+            <form class="topics" action="{{ url_for("topic_add", member_id=member_id) }}" method="post">
+                <fieldset>
+                    <legend>New Topic</legend>
+                    <br>
+                    <label for="topic_title">Title:</label>
+                    <input class="title" name="topic_title" type="text" value="Topic 01" maxlength="100">
+                    <label for="topic_content">Content:</label>
+                    <textarea name="topic_content"></textarea>
+                    <input type="submit" name="submit" value="Add">
+                    <input type="submit" name="submit" value="Discard">
+                </fieldset>
             </form>
             {% endblock %}

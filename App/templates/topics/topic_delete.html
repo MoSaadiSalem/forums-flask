@@ -1,9 +1,11 @@
             {% extends "topics/my_topics.html" %}
             {% block content %}
-            <form class="topics" action="{{ url_for("topic_delete", id= post.id)}}" method="post">
+            <form class="topics" action="{{ url_for("topic_delete", post_id= post.id)}}" method="post">
                 <fieldset>
-                    <legend><h3>{{ post.title }}</h3></legend>
+                    <legend>WARNING: you are about to lose a topic</legend>
+                    <br>
                     <article>
+                        <cite>{{ post.title }}</cite>
                         <p>{{ post.body }}</p>
                     </article>
                     <input type="submit" name="submit" value="Delete">
