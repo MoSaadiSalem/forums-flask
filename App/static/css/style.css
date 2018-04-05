@@ -79,14 +79,13 @@ footer{
   font-size:75%;
   }
 
-p, #atopic{
+p, .atopic{
   background: #e4d0d0;
   padding: 1%;
   }
 
-label{
+form label{
   font-size: 110%;
-  margin-left: 2.5%;
 }
 
 .title, textarea{
@@ -108,16 +107,16 @@ input[type=submit]{
   height: 2em;
 }
 
-#atopic{
+.atopic{
   display: table;
   margin: 1%;
 }
 
-#atopic p, #modifiers{
+.atopic p, #modifiers{
   display: table-cell;
 }
 
-#atopic p{
+.atopic p{
   width: 100%;
   -webkit-columns: auto;
 }
@@ -125,3 +124,17 @@ input[type=submit]{
 #modifiers{
   font-size: 80%;
 }
+
+.create{
+  margin-left: 90%;
+  text-align: right;
+}
+
+legend{
+  font-size: 120%;
+}
+
+fieldset{
+  margin-top: 1%;
+}
+
