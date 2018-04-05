@@ -113,3 +113,8 @@ class PostStore(BaseStore):
         all_posts = list(self.get_all())
         all_posts.sort(key=lambda post: post.date, reverse=True)
         return (post for post in all_posts)
+
+    def edit_post(self, id, title, body):
+        post = self.get_by_id(id)
+        post.title = title
+        post.body = body
