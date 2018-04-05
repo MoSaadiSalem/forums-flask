@@ -1,0 +1,39 @@
+            {% extends "topics/index.html" %}
+            {% block sub_nav %}
+            <section>
+                <nav class="sub-nav">
+                    <a class="sub-links" href="{{ url_for("home") }}">All Topics</a>
+                    <a class="sub-links sub-active">My Topics</a>
+                </nav>
+            </section>
+            {% endblock %}
+            {% block content %}
+            <section class="topics">
+                <br>
+                <a class="create" href="{{ url_for("topic_add", member_id=member.id) }}">Create a topic </a>
+                {% if posts_no %}
+                <fieldset>
+                    <legend><h3>"{{member.name}}", you have {{posts_no}} topics</h3></legend>
+                    {% for post in member.posts %}
+                    <div class="atopic">
+                        <p>
+                        <cite>
+                            <a href="">{{post.title}}</a>
+                        </cite>
+                        <br>
+                        <span class="member">
+                            posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                        </span>
+                        </p>
+                        <div id="modifiers">
+                            <a href="{{ url_for("topic_edit", post_id=post.id) }}">Edit</a> |
+                            <a href="{{ url_for("topic_delete", post_id=post.id ) }}"> Delete</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </fieldset>
+                {% else %}
+                <p>{{ member.name }}, you have no published topics yet.</p>
+                {% endif %}
+            </section>
+            {% endblock %}

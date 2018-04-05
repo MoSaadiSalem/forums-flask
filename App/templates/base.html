@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="en">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/normalize.css")}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/style.css")}}">
+    </head>
+    <body>
+
+        {% block header %}
+        <header>
+            <h1>OMAC</h1>
+        </header>
+        {% endblock %}
+
+        {% block main_nav %}
+        <nav class="main-nav">
+            <a href="">TOPICS</a>
+            <span>|</span>
+            <a href="">MEMBER</a>
+            <span>|</span>
+            <a href="">PROFILE</a>
+        </nav>
+        {% endblock %}
+
+        <main>
+            {% block flash_msg %}
+            <section class="flash_msg">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for msg in messages %}
+                    <li>{{ msg }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </section>
+            {% endblock %}
+
+            {% block sub_nav %}
+            <nav class="sub-nav">
+                <a class="sub-links">All Topics</a>
+                <a class="sub-links">My Topics</a>
+            </nav>
+            {% endblock %}
+            {% block content %}
+            <section class="topics">
+                {% for post in posts %}
+                <p>
+                    <cite>
+                        <a href="">{{post.title}}</a>
+                    </cite>
+                    <br>
+                    <span class="member">
+                        {{members.get_by_id(post.member_id).name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                    </span>
+                </p>
+                {% endfor %}
+            </section>
+            {% endblock %}
+        </main>
+        <footer>
+            <h4>Done by: Mohamed Salem</h4>
+            <p>&copy; Copyright 2018 by OMAC Full Stack Workshop</p>
+        </footer>
+    </body>
+</html>
