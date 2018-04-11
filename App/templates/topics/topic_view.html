@@ -1,0 +1,23 @@
+{% extends "topics/my_topics.html" %}
+{% block sub_nav %}
+{% endblock %}
+{% block content %}
+    <br>
+    <br>
+    <fieldset>
+        <legend></legend>
+        <a id="close" href="{{ url_for("home") }}">X</a>
+        <div class="atopic">
+            <p>
+                <cite>{{ post.title }}</cite>
+                <br>
+                <br>
+                {{ post.body }}
+                <br>
+                <span class="member">
+                    {{member_name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                </span>
+            </p>
+        </div>
+    </fieldset>
+{% endblock %}
