@@ -1,14 +1,40 @@
+body, body > nav{
+  background: #e4d2d2;
+  }
+
+body > main > nav > a:visited, fieldset, .active-link, .topics{
+  background: #e0e2ef;
+  }
+
 body{
+  color: #000;
   margin:2%;
   height: 100%;
   }
 
-body, .main-active{
-  background: #e4d2d2;
-  color: #000;
+nav{
+    font-style: italic;
   }
 
-header,footer, .main-nav{
+span, body > nav{
+  font-size: 135%;
+  }
+
+nav > a:active, .active-link{
+  font-style: normal;
+  }
+
+body > nav > a{
+  font-variant: small-caps;
+}
+
+main  nav  a{
+  font-size: 115%;
+  margin:0 auto;
+  padding: 1%;
+  }
+  
+header,footer, body > nav{
   text-align: center;
   }
 
@@ -30,47 +56,11 @@ footer{
   margin-top: 10%;
   height: 10%;
   clear: both;
-}
-
-span, .main-nav{
-  font-size: 135%;
-  }
-
-nav{
-  font-style: italic;
-  }
-
-footer{
-  margin: 1%;
   border-top: solid;
   border-color: #e0e2ef;
-  }
-
-.main-active, .sub-active{
-  font-style: normal;
-  }
-
-.main-nav{
-  font-variant: small-caps;
-  /* position: relative; */
 }
 
-.sub-nav{
-  font-size: 115%;
-  margin-left: auto;
-  margin-right: auto;
-  }
-
-.sub-links{
-  padding: 1%;
-  }
-
-.sub-active{
-  background: #e0e2ef;
-  }
-
 .topics{
-  background: #e0e2ef;
   padding: 1%;
   margin: 0 auto;
   }
@@ -112,17 +102,13 @@ input[type=submit]{
   margin: 1%;
 }
 
-.atopic p, #modifiers{
+.atopic > p, #modifiers{
   display: table-cell;
 }
 
-.atopic p{
+.atopic > p{
   width: 100%;
   -webkit-columns: auto;
-}
-
-#modifiers{
-  font-size: 80%;
 }
 
 .create{
@@ -134,7 +120,14 @@ legend{
   font-size: 120%;
 }
 
-fieldset{
-  margin-top: 1%;
+#modifiers{
+  font-size: 80%;
+}
+
+#close{
+  font-style: normal;
+  color: #000;
+  margin-left: 99%;
+  text-decoration: none;
 }
 
