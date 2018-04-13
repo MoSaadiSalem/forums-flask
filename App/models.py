@@ -26,8 +26,17 @@ class Member(object):
         self.id = 0
         self.posts = []
 
+    @property
     def __str__(self):
         return "Name: %s\nAge: %d\nMember ID: %s\nPosts:%s " % (self.name, self.age, self.id, len(self.posts))
+
+    @property
+    def __dict__(self):
+        return {"id": self.id,
+                "name": self.name,
+                "age": self.age,
+                "posts": self.posts,
+                }
 
 
 class Post(object):
@@ -52,5 +61,15 @@ class Post(object):
         self.id = 0
         self.date = datetime.datetime.now()
 
+    @property
     def __str__(self):
-        return "Title: %s\nContent: %s\nMember ID: %d\nPost ID: %d\nDate/Time: %s" % (self.title, self.body, self.member_id, self.id, self.date.strftime("%a %d-%m-%Y %H:%M:%S"))
+        return "Title: %s\nContent: %s\nMember ID: %d\nPost ID: %d\nDate/Time: %s" % (
+            self.title, self.body, self.member_id, self.id, self.date.strftime("%a %d-%m-%Y %H:%M:%S"))
+
+    @property
+    def __dict__(self):
+        return {"id": self.id,
+                "title": self.title,
+                "body": self.body,
+                "member_id": self.member_id,
+                }
