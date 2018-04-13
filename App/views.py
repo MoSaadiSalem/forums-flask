@@ -106,3 +106,11 @@ def my_topics(member_id):
 def topic_get_all():
     posts = [post.__dict__ for post in db_con.post_store.get_all()]
     return jsonify(posts)
+
+
+@app.route("/api/topic/add", methods=["POST"])
+def topic_create():
+    request_data = request.get_json()
+    new_post = models.Post(request_data["title"], request_data["body"], request_data["member_id"])
+    db_con.post_store.add(new_post)
+    return jsonify(new_post.__dict__)
