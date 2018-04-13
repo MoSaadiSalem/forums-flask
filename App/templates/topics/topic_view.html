@@ -1,0 +1,27 @@
+{% extends "topics/my_topics.html" %}
+{% block sub_nav %}
+    <section>
+        <nav>
+            <a href="{{ url_for("home") }}">All Topics</a>
+            <a href="{{ url_for("my_topics", member_id=1) }}">My Topics</a>
+        </nav>
+    </section>
+    {% endblock %}
+{% block content %}
+    <br>
+    <br>
+    <fieldset>
+        <legend></legend>
+        <article>
+            <p>
+                <cite>{{ post.title }}</cite>
+                <br><br>
+                {{ post.body }}
+                <br><br>
+                <span class="member">
+                    {{member_name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
+                </span>
+            </p>
+        </article>
+    </fieldset>
+{% endblock %}
