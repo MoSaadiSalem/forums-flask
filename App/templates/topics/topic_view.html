@@ -6,18 +6,22 @@
     <br>
     <fieldset>
         <legend></legend>
-        <a id="close" href="{{ url_for("home") }}">X</a>
-        <div class="atopic">
+        <a id="close" href="">X</a>
+        <script type=text/javascript src="{{ url_for('static', filename='js/scr.js') }}">
+        </script>
+        <!--<script>-->
+        <!--document.write('<a href="' + document.referrer + '">Close</a>');-->
+        <!--</script>-->
+        <article>
             <p>
                 <cite>{{ post.title }}</cite>
-                <br>
-                <br>
+                <br><br>
                 {{ post.body }}
-                <br>
+                <br><br>
                 <span class="member">
                     {{member_name}} posted on {{post.date.strftime("%a %d-%m-%Y %H:%M")}}
                 </span>
             </p>
-        </div>
+        </article>
     </fieldset>
 {% endblock %}
