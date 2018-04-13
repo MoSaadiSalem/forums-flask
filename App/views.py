@@ -4,7 +4,8 @@
 from flask import (redirect,
                    render_template,
                    request,
-                   url_for)
+                   url_for,
+                   jsonify)
 
 from App import (app,
                  db_con,
@@ -99,3 +100,9 @@ def my_topics(member_id):
                            title="OMAC - My Topics",
                            member=member,
                            posts_no=len(member.posts))
+
+
+@app.route("/api/topic/all")
+def topic_get_all():
+    posts = [post.__dict__ for post in db_con.post_store.get_all()]
+    return jsonify(posts)
