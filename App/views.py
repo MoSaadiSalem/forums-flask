@@ -60,6 +60,16 @@ def topic_edit(post_id):
                                post=post)
 
 
+@app.route("/topic/view/<int:post_id>")
+def topic_view(post_id):
+    post = db_con.post_store.get_by_id(post_id)
+    member_name = db_con.member_store.get_by_id(post.member_id).name
+    return render_template("topics/topic_view.html",
+                           title="OMAC - View Topic",
+                           post=post,
+                           member_name=member_name)
+
+
 @app.route("/topic/delete/<int:post_id>", methods=["GET", "POST"])
 def topic_delete(post_id):
     post = db_con.post_store.get_by_id(post_id)
