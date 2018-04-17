@@ -6,6 +6,7 @@ from flask import (redirect,
                    request,
                    url_for,
                    jsonify)
+from werkzeug.exceptions import abort
 
 from App import (app,
                  db_con,
@@ -19,7 +20,7 @@ app.config[
 @app.route("/index/")
 def home():
     return render_template("topics/index.html",
-                           title="OMAC - Add Topic",
+                           title="OMAC-Home",
                            posts=db_con.post_store.get_post_by_date(),
                            members=db_con.member_store)
 
@@ -38,14 +39,13 @@ def topic_add(member_id):
             return redirect(url_for("my_topics", member_id=member_id))
     else:
         return render_template("topics/topic_add.html",
-                               title="OMAC - Add Topic",
+                               title="OMAC-Add Topic",
                                member_id=member_id)
 
 
 @app.route("/topic/edit/<int:post_id>", methods=["GET", "POST"])
 def topic_edit(post_id):
     post = db_con.post_store.get_by_id(post_id)
-
     if request.method == "POST":
         if request.form["submit"] == "Save":
             db_con.post_store.edit_post(post.id,
@@ -57,7 +57,7 @@ def topic_edit(post_id):
             return redirect(url_for("my_topics", member_id=post.member_id))
     else:
         return render_template("topics/topic_edit.html",
-                               title="OMAC - Edit Topic",
+                               title="OMAC-Edit Topic",
                                post=post)
 
 
@@ -102,6 +102,8 @@ def my_topics(member_id):
                            posts_no=len(member.posts))
 
 
+# Web APIs
+
 @app.route("/api/topic/all")
 def topic_get_all():
     posts = [post.__dict__ for post in db_con.post_store.get_all()]
@@ -114,3 +116,22 @@ def topic_create():
     new_post = models.Post(request_data["title"], request_data["body"], request_data["member_id"])
     db_con.post_store.add(new_post)
     return jsonify(new_post.__dict__)
+
+
+@app.route("/api/topic/edit/<int:post_id>", methods=["PUT"])
+def api_topic_edit(post_id):
+    post = db_con.post_store.get_by_id(post_id)
+    if post is None:
+        abort(404)
+    request_data = request.get_json()
+    db_con.post_store.edit_post(post.id, request_data["title"], request_data["body"])
+    return jsonify(post.__dict__)
+
+
+@app.route("/api/topic/delete/<int:post_id>", methods=["DELETE"])
+def api_topic_delete(post_id):
+    post = db_con.post_store.get_by_id(post_id)
+    if post is None:
+        abort(404)
+    db_con.post_store.delete(post_id)
+    return jsonify(post.__dict__)
